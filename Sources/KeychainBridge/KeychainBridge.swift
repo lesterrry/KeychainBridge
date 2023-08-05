@@ -12,7 +12,7 @@ struct SecurityError: Error {
     var message: String?
 }
 
-struct KeychainBridge {
+public struct Keychain {
     private let serviceName: String
     
     public init(serviceName: String) {
