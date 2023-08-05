@@ -2,10 +2,22 @@ import XCTest
 @testable import KeychainBridge
 
 final class KeychainBridgeTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(KeychainBridge().text, "Hello, World!")
+    func testEverything() throws {
+        let bridge = KeychainBridge(serviceName: "com.aydarmedia.keychainbridge")
+        let account = "bridge"
+        let tokenContent = "test_token"
+        let tokenContentOverwritten = "bruh"
+        
+        try bridge.saveToken(tokenContent, account: account)
+        
+        XCTAssertEqual(try bridge.getToken(account: account), tokenContent)
+        
+        try bridge.saveToken(tokenContentOverwritten, account: account)
+        
+        XCTAssertEqual(try bridge.getToken(account: account), tokenContentOverwritten)
+        
+        try bridge.deleteToken(account: account)
+        
+        XCTAssertThrowsError(try bridge.getToken(account: account))
     }
 }
