@@ -65,7 +65,7 @@ public struct Keychain {
                 throw SecurityError(message: "Failed to read decode Keychain data")
             }
         } else {
-            throw SecurityError(message: "Failed to read from Keychain")
+            throw SecurityError(message: "Failed to read from Keychain: \(status.description)")
         }
     }
     

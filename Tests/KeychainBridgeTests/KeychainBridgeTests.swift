@@ -3,7 +3,7 @@ import XCTest
 
 final class KeychainBridgeTests: XCTestCase {
     func testEverything() throws {
-        let bridge = KeychainBridge(serviceName: "com.aydarmedia.keychainbridge")
+        let bridge = Keychain(serviceName: "com.aydarmedia.keychainbridge")
         let account = "bridge"
         let tokenContent = "test_token"
         let tokenContentOverwritten = "bruh"
